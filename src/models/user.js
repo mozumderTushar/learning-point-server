@@ -4,21 +4,21 @@ const bcrypt = require('bcrypt');
 const userSchema = new mongoose.Schema({
   firstName: {
     type: String,
-    required: true,
+    
     trim: true,
     min: 3,
     max: 20
   },
   lastName: {
     type: String,
-    required: true,
+  
     trim: true,
     min: 3,
     max: 20
   },
   userName: {
     type: String,
-    required: true,
+  
     trim: true,
     unique: true,
     index: true,
@@ -26,19 +26,34 @@ const userSchema = new mongoose.Schema({
   },
   email: {
     type: String,
-    required: true,
+ 
     trim: true,
     unique: true,
+    lowercase: true,
+  },
+  qualification: {
+    type: String,
+    trim: true,
+    lowercase: true,
+  },
+  subject: {
+    type: String,
+    trim: true,
+    lowercase: true,
+  },
+  charge: {
+    type: String,
+    trim: true,
+    lowercase: true,
+  },
+  time: {
+    type: String,    
+    trim: true,
     lowercase: true,
   },
   hash_password: {
     type: String,
     required: true,
-  },
-  role: {
-    type: String,
-    enum: ['student', 'teacher'],
-    default: 'student'
   },
   contactNumber: { type: String },
   profilePicture: { type: String}
@@ -59,5 +74,5 @@ userSchema.methods = {
     return bcrypt.compareSync(password, this.hash_password);
   }
 }
-
-module.exports = mongoose.model('Student', userSchema);
+  
+module.exports = mongoose.model('User', userSchema);
