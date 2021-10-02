@@ -17,7 +17,9 @@ exports.signup = (req, res) => {
         subject,
         charge,
         time,
-        contact
+        contact,
+        role,
+        profilePicture
       } = req.body;
       const _user = new User({
         firstName,
@@ -29,7 +31,9 @@ exports.signup = (req, res) => {
         subject,
         charge,
         time,
-        contact
+        contact,
+        role,
+        profilePicture
       });
 
       _user.save((err, data) => {

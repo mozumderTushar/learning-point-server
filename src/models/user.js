@@ -48,7 +48,12 @@ const userSchema = new mongoose.Schema({
     lowercase: true,
   },
   time: {
-    type: String,    
+    type: String,
+    trim: true,
+    lowercase: true,
+  },
+  role: {
+    type: String,
     trim: true,
     lowercase: true,
   },
@@ -57,23 +62,23 @@ const userSchema = new mongoose.Schema({
     required: true,
   },
   contactNumber: { type: String },
-  profilePicture: { type: String}
+  profilePicture: { type: String }
 }, { timestamps: true });
 
 userSchema.virtual('password')
-.set(function(password){
-  this.hash_password = bcrypt.hashSync(password, 10);
-})
+  .set(function (password) {
+    this.hash_password = bcrypt.hashSync(password, 10);
+  })
 
 userSchema.virtual('fullName')
-.get(function(){
-  return `${this.firstName} ${this.lastName}`; 
-})
+  .get(function () {
+    return `${ this.firstName } ${ this.lastName }`;
+  })
 
 userSchema.methods = {
-  authenticate: function(password){
+  authenticate: function (password) {
     return bcrypt.compareSync(password, this.hash_password);
   }
 }
-  
+
 module.exports = mongoose.model('User', userSchema);
