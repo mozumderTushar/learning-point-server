@@ -7,6 +7,8 @@ const app = express();
 
 // routes
 const authRoutes = require('./routes/auth');
+const teacherRoutes = require('./routes/teachers');
+const studentRoutes = require('./routes/students');
 
 // mongodb connection 
 mongoose.connect(
@@ -21,6 +23,8 @@ app.use(express.urlencoded({
   extended: true
 }));
 app.use('/api', authRoutes);
+app.use('/api', teacherRoutes);
+app.use('/api', studentRoutes);
 
 app.listen(process.env.PORT, () => {
   console.log(`Server is running on port ${ process.env.PORT }`);
