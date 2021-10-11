@@ -9,6 +9,7 @@ const app = express();
 const authRoutes = require('./routes/auth');
 const teacherRoutes = require('./routes/teachers');
 const studentRoutes = require('./routes/students');
+const stripeRoutes = require('./routes/stripe');
 
 // mongodb connection 
 mongoose.connect(
@@ -25,6 +26,7 @@ app.use(express.urlencoded({
 app.use('/api', authRoutes);
 app.use('/api', teacherRoutes);
 app.use('/api', studentRoutes);
+app.use('/api', stripeRoutes);
 
 app.listen(process.env.PORT, () => {
   console.log(`Server is running on port ${ process.env.PORT }`);
