@@ -17,7 +17,8 @@ const stripeSchema = new mongoose.Schema({
   email: {
     type: String,
     trim: true,
-    lowercase: true,
+    unique: false,
+    lowercase: true, 
   },
   subject: {
     type: String,
@@ -28,6 +29,10 @@ const stripeSchema = new mongoose.Schema({
     type: String,
     trim: true,
     lowercase: true,
+  },
+  teacherId: {
+    type: String,
+    trim: true,
   },
 }, { timestamps: true });
 

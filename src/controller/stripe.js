@@ -2,14 +2,13 @@ const Stripe = require('../models/stripe');
 const jwt = require('jsonwebtoken');
 
 exports.stripeInfo = (req, res) => {
-
-
       const {
         firstName,
         lastName,
         email,
         subject,
         time,
+        teacherId
       } = req.body;
       const _user = new Stripe({
         firstName,
@@ -17,6 +16,7 @@ exports.stripeInfo = (req, res) => {
         email,
         subject,
         time,
+        teacherId
       });
 
       _user.save((err, data) => {
