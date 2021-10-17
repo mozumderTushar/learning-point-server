@@ -34,6 +34,21 @@ const stripeSchema = new mongoose.Schema({
     type: String,
     trim: true,
   },
+  teacherFirstName: {
+    type: String,
+    trim: true,
+    lowercase: true,
+  },
+  teacherLastName: {
+    type: String,
+    trim: true,
+    lowercase: true,
+  },
+  reservedSubject: {
+    type: String,
+    trim: true,
+    lowercase: true,
+  },
 }, { timestamps: true });
 
 stripeSchema.virtual('fullName')
