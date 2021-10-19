@@ -11,6 +11,7 @@ exports.stripeInfo = (req, res) => {
     teacherId,
     teacherFirstName,
     teacherLastName,
+    teacherContact,
     reservedSubject
   } = req.body;
   const _user = new Stripe({
@@ -22,6 +23,7 @@ exports.stripeInfo = (req, res) => {
     teacherId,
     teacherFirstName,
     teacherLastName,
+    teacherContact,
     reservedSubject
   });
 
