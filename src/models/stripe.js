@@ -18,7 +18,7 @@ const stripeSchema = new mongoose.Schema({
     type: String,
     trim: true,
     unique: false,
-    lowercase: true, 
+    lowercase: true,
   },
   subject: {
     type: String,
@@ -40,6 +40,11 @@ const stripeSchema = new mongoose.Schema({
     lowercase: true,
   },
   teacherLastName: {
+    type: String,
+    trim: true,
+    lowercase: true,
+  },
+  teacherEmail: {
     type: String,
     trim: true,
     lowercase: true,

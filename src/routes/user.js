@@ -1,9 +1,7 @@
 const express = require('express');
-const { stripeInfo, getStripe } = require('../controller/stripe');
-const { validateSignupRequest, isRequestValidated, validateSigninRequest } = require('../validators/auth');
-const router = express.Router();
+const { getUser } = require('../controller/user');
 
-router.post('/stripe',  stripeInfo);
-router.get('/stripe-info',  getStripe);
+const router = express.Router();
+router.get('/all-users',  getUser);
 
 module.exports = router;
