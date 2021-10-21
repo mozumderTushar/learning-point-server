@@ -1,31 +1,25 @@
-const Stripe = require('../models/stripe');
+const Meet = require('../models/meet');
 
-exports.stripeInfo = (req, res) => {
+exports.meetInfo = (req, res) => {
   const {
-    firstName,
-    lastName,
-    email,
-    subject,
-    time,
-    teacherId,
     teacherFirstName,
     teacherLastName,
-    teacherContact,
     teacherEmail,
-    reservedSubject
+    studentEmail,
+    meet_link,
+    bookedSubject,
+    preferredTime,
+    meetLinkSend
   } = req.body;
-  const _user = new Stripe({
-    firstName,
-    lastName,
-    email,
-    subject,
-    time,
-    teacherId,
+  const _user = new Meet({
     teacherFirstName,
     teacherLastName,
-    teacherContact,
     teacherEmail,
-    reservedSubject
+    studentEmail,
+    meet_link,
+    bookedSubject,
+    preferredTime,
+    meetLinkSend
   });
 
   _user.save((err, data) => {
@@ -34,16 +28,17 @@ exports.stripeInfo = (req, res) => {
         message: 'Something is wrong'
       });
     }
+
     if (data) {
       return res.status(201).json({
-        message: 'Payment send  Successfully....!'
+        message: 'Meet link send Successfully....!'
       })
     }
   });
 }
 
-exports.getStripe = (req, res) => {
-  Stripe.find({})
+exports.getMeet = (req, res) => {
+  Meet.find({})
     .exec((err, info) => {
       if (err) return res.status(400).json({ error: err });
       if (info) {
