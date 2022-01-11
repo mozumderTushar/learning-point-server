@@ -12,6 +12,7 @@ const studentRoutes = require('./routes/students');
 const stripeRoutes = require('./routes/stripe');
 const userRoutes = require('./routes/user');
 const meetRoutes = require('./routes/meet');
+const approvedRoutes = require('./routes/Approved');
 
 // mongodb connection 
 mongoose.connect(
@@ -31,6 +32,7 @@ app.use('/api', studentRoutes);
 app.use('/api', stripeRoutes);
 app.use('/api', userRoutes);
 app.use('/api', meetRoutes);
+app.use('/api', approvedRoutes);
 
 app.listen(process.env.PORT, () => {
   console.log(`Server is running on port ${ process.env.PORT }`);
