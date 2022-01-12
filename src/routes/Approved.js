@@ -1,5 +1,5 @@
 const express = require('express');
-const { approvedInfo, getApprovedId } = require('../controller/Approved');
+const { approvedInfo, getApprovedId, deleteId } = require('../controller/Approved');
 const router = express.Router();
 
 router.post('/approved',  approvedInfo);
