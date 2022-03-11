@@ -34,6 +34,10 @@ app.use('/api', userRoutes);
 app.use('/api', meetRoutes);
 app.use('/api', approvedRoutes);
 
+app.get('/', (req, res) => {
+  res.send('Welcome to MenTex')
+})
+
 app.listen(process.env.PORT, () => {
-  console.log(`Server is running on port ${ process.env.PORT }`);
+  console.log(`Server is running on port ${ process.env.PORT || 2000 }`);
 });
