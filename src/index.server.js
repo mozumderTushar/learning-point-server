@@ -35,7 +35,7 @@ app.use('/api', meetRoutes);
 app.use('/api', approvedRoutes);
 
 app.get('/', (req, res) => {
-  res.send('Welcome to MenTex')
+  res.send('Welcome to Learning Point')
 })
 
 app.listen(process.env.PORT, () => {
